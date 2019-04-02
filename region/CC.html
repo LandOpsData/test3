@@ -30,7 +30,9 @@
 	
 	<script>
 $(document).ready(function() {
-	$('#summary').DataTable();
+	$('#summary').DataTable( {
+		dom:''
+	} );
     $('#example').DataTable( {
         dom: 'Bfrtip',
         buttons: [
@@ -52,6 +54,26 @@ $(document).ready(function() {
 				]
 	} );
 	    $('#example3').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 
+			'csv', 
+			'excel', 
+			/*'pdf',*/
+			'print'
+				]
+	} );
+		$('#example4').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 
+			'csv', 
+			'excel', 
+			/*'pdf',*/
+			'print'
+				]
+	} );
+		$('#example5').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'copy', 
@@ -117,8 +139,8 @@ $(document).ready(function() {
       <td>Central Coast</td>
       <td>32.96</td>
       <td>32.96</td>
-      <td>0.84</td>
-      <td>32.12</td>
+      <td>1.11</td>
+      <td>31.85</td>
       <td>0.0</td>
     </tr>
   </tbody>
@@ -140,6 +162,12 @@ $(document).ready(function() {
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" data-toggle="tab" href="#menu2">Release Needed</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#menu3">Completed This Week</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#menu4">Completed This Month</a>
 				  </li>
 				</ul>
 
@@ -174,8 +202,8 @@ $(document).ready(function() {
       <td>CC_B</td>
       <td>14.86</td>
       <td>14.86</td>
-      <td>0.47</td>
-      <td>14.39</td>
+      <td>0.74</td>
+      <td>14.12</td>
       <td>0.0</td>
     </tr>
     <tr>
@@ -294,6 +322,36 @@ $(document).ready(function() {
       <th>Miles</th>
       <th>Fcst Tr Strt Dt</th>
       <th>Fcst Tr End Dt</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+				  </div>
+				  <div class="tab-pane container fade" id="menu3">
+				  <br>
+				  <table border="0" class="dataframe table table-sm table-bordered" id="example4">
+  <thead>
+    <tr style="text-align: right;">
+      <th>REGION</th>
+      <th>VegTA</th>
+      <th>Miles</th>
+      <th>FAct Tr Dt</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+				  </div>
+				  <div class="tab-pane container fade" id="menu3">
+				  <br>
+				  <table border="0" class="dataframe table table-sm table-bordered" id="example5">
+  <thead>
+    <tr style="text-align: right;">
+      <th>REGION</th>
+      <th>VegTA</th>
+      <th>Miles</th>
+      <th>Act Tr Dt</th>
     </tr>
   </thead>
   <tbody>
