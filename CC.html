@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+	
+	<style>
+	html {
+    font-size: 13px;
+	} 
+	</style>
+	
+	<script>
+$(document).ready(function() {
+	$('#summary').DataTable();
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 
+			'csv', 
+			'excel', 
+			/*'pdf',*/
+			'print'
+				]
+	} );
+	    $('#example2').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 
+			'csv', 
+			'excel', 
+			/*'pdf',*/
+			'print'
+				]
+	} );
+	    $('#example3').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 
+			'csv', 
+			'excel', 
+			/*'pdf',*/
+			'print'
+				]
+	} );
+} );
+
+	
+	</script>
+</head>
+<body>
+
+<!--Navigation Bar-->
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Central Coast</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+	  <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Regions</a>
+		<div class="dropdown-menu">
+		  <h5 class="dropdown-header">Select Region</h5>
+		  <a class="dropdown-item" href="../outputs/BA.html" target="_blank">Bay Area</a>
+		  <a class="dropdown-item" href="../outputs/CC.html" target="_blank">Central Coast</a>
+		  <a class="dropdown-item" href="../outputs/CV.html" target="_blank">Central Valley</a>
+		  <a class="dropdown-item" href="../outputs/NC.html" target="_blank">North Coast</a>
+		  <a class="dropdown-item" href="../outputs/NV.html" target="_blank">North Valley</a>
+		  <a class="dropdown-item" href="../outputs/SI.html" target="_blank">Sierra</a>
+		</div>
+	  </li>  
+    </ul>
+  </div>  
+</nav>
+
+<!--Meat and Potatoes-->
+
+<div class="container-fluid" style="margin-top:30px" >
+	<div class="row">
+		<div class="col-sm-8">
+		Region Summary
+		<br>
+		<br>
+		<table border="0" class="dataframe table table-sm table-bordered" id="summary">
+  <thead>
+    <tr style="text-align: right;">
+      <th>REGION</th>
+      <th>Miles</th>
+      <th>Released</th>
+      <th>Cleared</th>
+      <th>Past Due</th>
+      <th>Release Needed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Central Coast</td>
+      <td>32.96</td>
+      <td>32.96</td>
+      <td>0.84</td>
+      <td>32.12</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid" style="margin-top:30px" >
+	<div class="row">
+		<div class="col-sm-8">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+				  <li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#home">Work Section</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#menu1">Past Due</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#menu2">Release Needed</a>
+				  </li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+				  <div class="tab-pane container active" id="home">
+				  <br>
+				  <table border="0" class="dataframe table table-sm table-bordered" id="example">
+  <thead>
+    <tr style="text-align: right;">
+      <th>REGION</th>
+      <th>Work Section</th>
+      <th>Miles</th>
+      <th>Released</th>
+      <th>Cleared</th>
+      <th>Past Due</th>
+      <th>Release Needed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Central Coast</td>
+      <td>CC_A</td>
+      <td>11.96</td>
+      <td>11.96</td>
+      <td>0.09</td>
+      <td>11.88</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>CC_B</td>
+      <td>14.86</td>
+      <td>14.86</td>
+      <td>0.47</td>
+      <td>14.39</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>CC_C</td>
+      <td>1.25</td>
+      <td>1.25</td>
+      <td>0.08</td>
+      <td>1.17</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>CC_D</td>
+      <td>0.68</td>
+      <td>0.68</td>
+      <td>0.08</td>
+      <td>0.60</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>CC_E</td>
+      <td>0.14</td>
+      <td>0.14</td>
+      <td>0.00</td>
+      <td>0.14</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>CC_F</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.09</td>
+      <td>0.03</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>LP_A</td>
+      <td>3.95</td>
+      <td>3.95</td>
+      <td>0.03</td>
+      <td>3.92</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+				  </div>
+				  <div class="tab-pane container fade" id="menu1">
+				  <br>
+				  <table border="0" class="dataframe table table-sm table-bordered" id="example2">
+  <thead>
+    <tr style="text-align: right;">
+      <th>REGION</th>
+      <th>VegTA</th>
+      <th>Miles</th>
+      <th>Fcst Tr Strt Dt</th>
+      <th>Fcst Tr End Dt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Central Coast</td>
+      <td>2017_LP_A_1629</td>
+      <td>0.003</td>
+      <td>2019-04-01</td>
+      <td>2019-04-01</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>2017_CC_A_045</td>
+      <td>0.004</td>
+      <td>2019-04-01</td>
+      <td>2019-04-01</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>2017_LP_A_002</td>
+      <td>0.004</td>
+      <td>2019-04-01</td>
+      <td>2019-04-01</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>2017_CC_B_042</td>
+      <td>0.035</td>
+      <td>2019-04-01</td>
+      <td>2019-04-01</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>2017_LP_A_001</td>
+      <td>0.041</td>
+      <td>2019-04-01</td>
+      <td>2019-04-01</td>
+    </tr>
+    <tr>
+      <td>Central Coast</td>
+      <td>2018_LP_A_0003</td>
+      <td>0.009</td>
+      <td>2019-04-01</td>
+      <td>2019-04-01</td>
+    </tr>
+  </tbody>
+</table>
+				  </div>
+				  <div class="tab-pane container fade" id="menu2">
+				  <br>
+				  <table border="0" class="dataframe table table-sm table-bordered" id="example3">
+  <thead>
+    <tr style="text-align: right;">
+      <th>REGION</th>
+      <th>VegTA</th>
+      <th>Miles</th>
+      <th>Fcst Tr Strt Dt</th>
+      <th>Fcst Tr End Dt</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+				  </div>
+				</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
